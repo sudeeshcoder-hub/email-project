@@ -178,26 +178,28 @@
 
 <script>
 document.getElementById("biodataForm").addEventListener("submit", async function(e) {
-  e.preventDefault(); // prevent page reload
+  e.preventDefault();
 
   const formData = Object.fromEntries(new FormData(this).entries());
 
-  let res = await fetch("https://bio-data-form.vercel.app/api/submit", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData)
-  });
-let data = await res.json();
-if (res.ok) {
-  alert(data.message || "Form submitted successfully! Check your email for confirmation.");
-} else {
-  alert(data.message || "Something went wrong. Please try again.");
-}
+  try {
+    let res = await fetch("http://127.0.0.1:8000/send-email/", { // change when hosted
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData)
+    });
 
-
+    let data = await res.json();
+    if (res.ok) {
+      alert(data.message || "Form submitted successfully! Check your email for confirmation.");
+    } else {
+      alert(data.message || "Something went wrong. Please try again.");
+    }
+  } catch (err) {
+    alert("Error: " + err.message);
+  }
 });
 </script>
-
 </body>
 </html>
 
