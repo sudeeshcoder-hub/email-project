@@ -77,10 +77,15 @@ WSGI_APPLICATION = 'email_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'sudeesh',
+        'ENCRYPTED': True,
+        'CLIENT': {
+            'host': os.getenv('MONGODB_URI'),,
+        }
     }
 }
+
 
 
 # Password validation
@@ -140,6 +145,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+
 
 
 
