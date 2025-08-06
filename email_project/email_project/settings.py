@@ -128,4 +128,16 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'sudeeshcoder@gmail.com'        # Replace with your Gmail
 EMAIL_HOST_PASSWORD = 'mkygtjrntxamsnvz'       # Replace with Gmail App Password
 
+INSTALLED_APPS = [
+    ...
+    'corsheaders',
+]
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    ...
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 
