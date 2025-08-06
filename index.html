@@ -183,7 +183,7 @@ document.getElementById("biodataForm").addEventListener("submit", async function
   const formData = Object.fromEntries(new FormData(this).entries());
 
   try {
-    let res = await fetch("http://127.0.0.1:8000/send-email/", { // change when hosted
+    let res = await fetch("https://biodata-mh2b.onrender.com/send-email/", { // change when hosted
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData)
